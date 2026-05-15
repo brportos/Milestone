@@ -12,4 +12,16 @@ static void	ft_putlowhexa(int fd, unsigned long long nbr, int *len)
 	ft_putchar(fd, base[nbr % 16], len);
 }
 
+void	ft_putaddress(int fd, void *ptr, int *len)
+{
+	unsigned long long	address;
 
+	if (!ptr || !len)
+	{
+		ft_putstr(fd, "(nil)", len);
+		return ;
+	}
+	address = (unsigned long long)ptr;
+	ft_putstr(fd, "0x", len);
+	ft_putlowhexa(fd, address, len);
+}
