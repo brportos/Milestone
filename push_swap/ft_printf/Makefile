@@ -8,7 +8,8 @@ SRC = ft_putchar_fd.c\
         isaddress_fd.c\
         islowhexa_fd.c\
         isunputnbr_fd.c\
-        isuphexa_fd.c
+        isuphexa_fd.c \
+        isconversion.c 
 
 OBJ = $(SRC:%.c=%.o)
 
