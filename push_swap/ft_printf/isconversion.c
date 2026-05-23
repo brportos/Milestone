@@ -7,12 +7,12 @@ void    ft_putfloat(int fd, double n, int precision, int *len)
 
     if (n < 0)
     {
-        ft_putchar_fd(fd, "-", 1);
+        ft_putchar_fd(fd, '-', len);
         n = -n;
     }
     whole = (long)n;
     ft_putnbr_fd(fd, whole, len);
-    ft_putchar_fd(fd, ".", 1);
+    ft_putchar_fd(fd, '.', len);
     n -= (double)whole;
     i = 0;
     while (i < precision)
@@ -33,7 +33,7 @@ void    isconversion(int fd, va_list *ap, char *str, int *len)
     else if (*str == 's')
         ft_putstr_fd(fd, va_arg(*ap, char *), len);
     else if (*str == 'p')
-        isaddress(fd, va_arg(*ap, void *), len);
+        isaddress_fd(fd, va_arg(*ap, void *), len);
     else if (*str == 'd' || *str == 'i')
         ft_putnbr_fd(fd, (int)va_arg(*ap, int), len);
     else if (*str == 'u')

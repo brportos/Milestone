@@ -8,7 +8,7 @@ void	ft_putnbr_fd(int fd, int nbr, int *len)
 		ft_putstr_fd(fd, "-2147483648", len);
 	else if (nbr < 0)
 	{
-		ft_putchar_fd(fd, "-", len);
+		ft_putchar_fd(fd, '-', len);
 		nbr *= -1;
 	}
 	else if (nbr >= 10)

@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static void	islowhexa_fd(int fd, unsigned long long nbr, int *len)
+static void	islowhexa(int fd, unsigned long long nbr, int *len)
 {
 	char	*base;
 
@@ -8,7 +8,7 @@ static void	islowhexa_fd(int fd, unsigned long long nbr, int *len)
 	if (!len)
 		return ;
 	if (nbr > 15)
-		islowhexa_fd(fd, nbr / 16, len);
+		islowhexa(fd, nbr / 16, len);
 	ft_putchar_fd(fd, base[nbr % 16], len);
 }
 
@@ -23,5 +23,5 @@ void	isaddress_fd(int fd, void *ptr, int *len)
 	}
 	address = (unsigned long long)ptr;
 	ft_putstr_fd(fd, "0x", len);
-	islowhexa_fd(fd, address, len);
+	islowhexa(fd, address, len);
 }
