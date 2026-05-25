@@ -29,3 +29,27 @@ int	find_max(t_stack *a)
 	}
 	return (max);
 }
+
+int	max_position(t_stack *b)
+{
+	int	max;
+	int	pos;
+	int	i;
+
+	max = find_max(b);
+	pos = 0;
+	i = 0;
+	if (!b)
+		return (0);
+	while (b)
+	{
+		if (b->content == max)
+		{
+			pos = i;
+			break ;
+		}
+		i++;
+		b = b->next;
+	}
+	return (pos);
+}
