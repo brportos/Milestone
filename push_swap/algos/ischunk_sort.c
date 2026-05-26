@@ -30,26 +30,28 @@ int	find_max(t_stack *a)
 	return (max);
 }
 
-int	max_position(t_stack *b)
+void	chunk_sort(t_stack **a, t_stack **b, t_stats *ops)
 {
-	int	max;
-	int	pos;
-	int	i;
+	int	size;
+	int	chunk_size;
 
-	max = find_max(b);
-	pos = 0;
-	i = 0;
-	if (!b)
-		return (0);
-	while (b)
+	if (!*a || is_sorted(*a) == 1)
+		return ;
+	size = stack_size(*a);
+	chunk_size = ft_sqr(size);
+	pb_chunks(a, b, chunk_size, ops);
+	while (*b)
 	{
-		if (b->content == max)
+		if (max_position(*b) < stack_size(*b) / 2)
 		{
-			pos = i;
-			break ;
+			while ((*b)->content != find_max(*b))
+				rb(b, ops);
 		}
-		i++;
-		b = b->next;
+		else
+		{
+			while ((*b)->content != find_max(*b))
+				rrb(b, ops);
+		}
+		pa(a, b, ops);
 	}
-	return (pos);
 }
