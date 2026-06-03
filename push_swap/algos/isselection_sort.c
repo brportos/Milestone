@@ -16,21 +16,3 @@ int	find_min(t_stack *a)
 	return (min);
 }
 
-static void	move_min_top(t_stack **a, t_stats *ops)
-{
-	int	min;
-	int	pos;
-
-	min = find_min(*a);
-	pos = min_position(*a);
-	if (pos < stack_size(*a) / 2)
-	{
-		while ((*a)->content != min)
-			ra(a, ops);
-	}
-	else
-	{
-		while ((*a)->content != min)
-			rra(a, ops);
-	}
-}
