@@ -34,3 +34,15 @@ static void	move_min_top(t_stack **a, t_stats *ops)
 			rra(a, ops);
 	}
 }
+
+void	selection_sort(t_stack **a, t_stack **b, t_stats *ops)
+{
+	while (stack_size(*a) > 3)
+	{
+		move_min_top(a, ops);
+		pb(a, b, ops);
+	}
+	sort_three(a, ops);
+	while (*b)
+		pa(a, b, ops);
+}
