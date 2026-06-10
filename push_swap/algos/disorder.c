@@ -27,3 +27,32 @@ double	compute_disorder(t_stack *a, t_stats *ops)
 	ops->disorder = (double)mistakes / total_pairs;
 	return ((double)mistakes / total_pairs);
 }
+
+void	sort_three(t_stack **a, t_stats *ops)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	if (!a || !(*a) || !(*a)->next || !(*a)->next->next)
+		return ;
+	first = (*a)->content;
+	second = (*a)->next->content;
+	third = (*a)->next->next->content;
+	if (first > second && second < third && third > first)
+		sa(a, ops);
+	else if (first > second && second > third)
+	{
+		ra(a, ops);
+		sa(a, ops);
+	}
+	else if (first > second && second < third && third < first)
+		ra(a, ops);
+	else if (first < second && second > third && first < third)
+	{
+		sa(a, ops);
+		ra(a, ops);
+	}
+	else if (first < second && second > third && first > third)
+		rra(a, ops);
+}
